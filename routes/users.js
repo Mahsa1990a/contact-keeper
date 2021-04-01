@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router(); // so with this we dont need app.get(...) we do router.get(...) or router.post(...)
+const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator'); // add it for validation 
 const User = require('../models/User');
 
@@ -47,8 +48,16 @@ router.post('/',
       password
     });
 
+    // hashing password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+    await user.save();
+
+    res.send('User saved');
+
   } catch (err) {
-    
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
   
 }); 

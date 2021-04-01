@@ -21,15 +21,18 @@ router.post('/',
 
  (req, res) => {  //so here '/' means api/users because we defined it in main server.js
 
-  //res.send(req.body); // it will give us the data that's sent to the route(which is email, pass, name)
-
-  // Finds the validation errors in this request and wraps them in an object with handy functions
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() }); //will give us an arr of errors
+ 
+ // Finds the validation errors in this request and wraps them in an object with handy functions
+ const errors = validationResult(req);
+ if (!errors.isEmpty()) {
+   return res.status(400).json({ errors: errors.array() }); //will give us an arr of errors
   }
   
-  res.send('passed');
+  //res.send(req.body); // it will give us the data that's sent to the route(which is email, pass, name) SO destrutcure it into:
+  const { name, email, password } = req.body;
+
+  
+  
 }); 
 
 module.exports = router;

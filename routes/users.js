@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router(); // so with this we dont need app.get(...) we do router.get(...) or router.post(...)
 
+const user = require('../models/User');
+
 // @ route            POST api/users
 // @ description      Register a user
 // @ access           Public

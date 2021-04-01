@@ -1,5 +1,6 @@
 
 {
   "_comment": "Purpose of this file is for global variable",
-  "mongoURI": "mongodb+srv://Mahsa123:Mahsa123@contactkeeper.ubt9j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://Mahsa123:Mahsa123@contactkeeper.ubt9j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
 }

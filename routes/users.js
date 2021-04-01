@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router(); // so with this we dont need app.get(...) we do router.get(...) or router.post(...)
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator'); // add it for validation 
 const User = require('../models/User');
 

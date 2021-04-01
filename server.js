@@ -4,7 +4,8 @@ const app = express();
 
 //Add a route
 app.get('/', (req, res) => {
-  res.send('OkOkOk');
+  //it's gonna be a json API so:
+  res.json({ msg: 'Welcome to the ContactKeeper API.....' });
 });
 
 const PORT = process.env.PORT || 5000;

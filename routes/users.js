@@ -54,7 +54,12 @@ router.post('/',
     user.password = await bcrypt.hash(password, salt);
     await user.save();
 
-    res.send('User saved');
+    //The object that I wanna send in the token
+    const payload = {
+      user: {
+        id: user.id //with this user id we can access all the contacts that the logged in user has
+      }
+    }
 
   } catch (err) {
     console.error(err.message);

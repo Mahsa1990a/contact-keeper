@@ -6,6 +6,9 @@ const app = express();
 // Connect Database:
 connectDB();
 
+//Init Middleware
+app.use(express.json({ extended: false })); //by doing this we can accept body data
+
 //Add a route
 app.get('/', (req, res) => {
   //it's gonna be a json API so:

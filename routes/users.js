@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router(); // so with this we dont need app.get(...) we do router.get(...) or router.post(...)
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const config = require('../config/default.json');
 const { body, validationResult } = require('express-validator'); // add it for validation 
 const User = require('../models/User');
 
@@ -60,6 +61,14 @@ router.post('/',
         id: user.id //with this user id we can access all the contacts that the logged in user has
       }
     }
+
+    // Sign jwt
+    jwt.sign(payload, config.get("jwtSecret"), {
+      expiresIn: 360000
+    }, (err, token) => {
+      if(err) throw err;
+      res.json({ token });
+    });
 
   } catch (err) {
     console.error(err.message);

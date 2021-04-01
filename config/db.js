@@ -9,7 +9,8 @@ const connectDB = () => {
   mongoose.connect(db, { //we added next line to not have warnings
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true
   })
   .then(() => console.log('MongoDB contected'))
   .catch(err => {

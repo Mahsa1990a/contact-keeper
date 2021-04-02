@@ -13,8 +13,15 @@ const User = require('../models/User');
 // @ route            GET api/auth
 // @ description      Get logged in user
 // @ access           Private
-router.get('/', auth, (req, res) => {   // so we path auth to protect this route
-  res.send('Get logged in User');
+router.get('/', auth, async (req, res) => {   // so we path auth to protect this route
+  try {
+                          // we used mangoose methode  // we dont wanna return pass  
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 }); 
 
 // @ route            POST api/auth

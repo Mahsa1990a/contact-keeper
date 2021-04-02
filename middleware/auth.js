@@ -7,7 +7,7 @@ const config = require('config'); //we need access to the secret
 
 module.exports = function(req, res, next) {
   // Get token from header
-  const token = req.header('x-ayth-token');
+  const token = req.header('x-auth-token');
 
   // Check if not token
   if(!token) {

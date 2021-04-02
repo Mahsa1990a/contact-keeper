@@ -32,7 +32,18 @@ router.post('/',
 
   const { email, password } = req.body; //getting email and pass from body
 
+  try {
+    let user = await User.findOne({ email });
 
+    if (!user) {
+      return res.status(400).json({ msg: 'Invalid Credentials' });
+    }
+
+    
+
+  } catch (err) {
+    
+  }
 });
 
 module.exports = router;

@@ -4,11 +4,10 @@ const express = require('express');
 const router = express.Router(); // so with this we dont need app.get(...) we do router.get(...) or router.post(...)
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('../config/default.json');
+const config = require('config');
 const { body, validationResult } = require('express-validator'); // add it for validation 
-const User = require('../models/User');
 
-const user = require('../models/User');
+const User = require('../models/User');
 
 // @ route            POST api/users
 // @ description      Register a user
@@ -63,12 +62,17 @@ router.post('/',
     }
 
     // Sign jwt
-    jwt.sign(payload, config.get("jwtSecret"), {
-      expiresIn: 360000
-    }, (err, token) => {
-      if(err) throw err;
-      res.json({ token });
-    });
+    jwt.sign(
+      payload, 
+      config.get('jwtSecret'), 
+      {
+        expiresIn: 360000,
+      }, 
+      (err, token) => {
+        if(err) throw err;
+        res.json({ token }); //if not err
+      },
+    );
 
   } catch (err) {
     console.error(err.message);

@@ -39,7 +39,13 @@ router.post('/',
       return res.status(400).json({ msg: 'Invalid Credentials' });
     }
 
-    
+    //if there is a user -> we want to continue to check the password with bcrypt.compare methode 
+    //which it takes plain pass which is comes in from body and hash password(user.password)
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) { //if the pass doesn't match
+      return res.status(400).json({ msg: 'Invalid Credentials' });
+    }
 
   } catch (err) {
     

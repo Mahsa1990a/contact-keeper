@@ -13,7 +13,7 @@ const User = require('../models/User');
 // @ route            GET api/auth
 // @ description      Get logged in user
 // @ access           Private
-router.get('/', (req, res) => {  
+router.get('/', auth, (req, res) => {   // so we path auth to protect this route
   res.send('Get logged in User');
 }); 
 

@@ -46,6 +46,27 @@ router.post('/',
     if (!isMatch) { //if the pass doesn't match
       return res.status(400).json({ msg: 'Invalid Credentials' });
     }
+    // And if pass match we send token:
+
+    //The object that I wanna send in the token
+    const payload = {
+      user: {
+        id: user.id
+      }
+    }
+
+    // Sign jwt
+    jwt.sign(
+      payload, 
+      config.get('jwtSecret'), 
+      {
+        expiresIn: 360000,
+      }, 
+      (err, token) => {
+        if(err) throw err;
+        res.json({ token }); //if not err
+      },
+    );
 
   } catch (err) {
     

@@ -29,6 +29,10 @@ router.post('/',
   if (!errors.isEmpty()) {
    return res.status(400).json({ errors: errors.array() }); //will give us an arr of errors
   }
+
+  const { email, password } = req.body; //getting email and pass from body
+
+
 });
 
 module.exports = router;

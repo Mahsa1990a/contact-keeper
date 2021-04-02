@@ -36,7 +36,7 @@ router.post('/',
 
   // Dealing with Database, bcrypt( they return promisses)
   try {
-    let user = await User.findOne({ email: email });
+    let user = await User.findOne({ email }); //or { email: email }
 
     //If user exists:
     if (user) {

@@ -5,6 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../middleware/auth'); // Anytime we need to protect route we need to bring in middleware
 const { body, validationResult } = require('express-validator'); // add it for validation 
 
 const User = require('../models/User');

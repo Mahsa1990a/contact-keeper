@@ -22,7 +22,7 @@ module.exports = function(req, res, next) {
     req.user = decodded.user;
     next(); //then we call next to move on
 
-  } catch (err) {
+  } catch (err) { // And if it doesn't verify:
     res.status(401).send('Token is not valid');
   }
 

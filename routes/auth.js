@@ -19,8 +19,16 @@ router.get('/', (req, res) => {
 // @ route            POST api/auth
 // @ description      Auth user and get token
 // @ access           Public
-router.post('/', (req, res) => {  
-  res.send('Log in user');
+router.post('/',
+  //               Validating Email & Pass
+  body('email', 'Please include a valid email').isEmail(),
+  body('password', 'Please is required').exists(),
+
+  async (req, res) => {  
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+   return res.status(400).json({ errors: errors.array() }); //will give us an arr of errors
+  }
 });
 
 module.exports = router;

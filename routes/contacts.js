@@ -28,7 +28,9 @@ router.get('/', auth, async (req, res) => {
 // @ route            POST api/contacts
 // @ description      Add new contacts
 // @ access           Private
-router.post('/', (req, res) => { 
+router.post('/', [ auth,  // The way we can use some middlewares is using []
+
+], (req, res) => { 
   res.send('Add contact');
 }); 
 

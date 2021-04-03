@@ -4,7 +4,7 @@ const ContactSchema = mongoose.Schema({
 
   //  We need to create a relationship between contacts and users because each users has their own set of contacts
   user: {
-    type: mangoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
   name: {

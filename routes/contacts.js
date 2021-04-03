@@ -54,7 +54,8 @@ router.post('/', [ auth,  // The way we can use some middlewares is using []
     res.json(contact);
 
   } catch (err) {
-    
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 
 }); 

@@ -38,6 +38,20 @@ router.post('/', [ auth,  // The way we can use some middlewares is using []
   }
 
   const { name, email, phone, type } = req.body; //getting name, ... from body
+
+  try {
+    const newContact = new Contact({
+      name,
+      email,
+      phone,
+      type,
+      user: req.user.id
+    });
+    
+  } catch (err) {
+    
+  }
+
 }); 
 
 // @ route            PUT api/contacts/:id

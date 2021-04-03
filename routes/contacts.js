@@ -13,7 +13,13 @@ const Contact = require('../models/Contact');
 // @ description      Get All user contacts
 // @ access           Private
 router.get('/', auth, (req, res) => { 
-  res.send('Get All contacts');
+  // res.send('Get All contacts');    Now we need to pull from database:
+  try {
+    //                             find() means find by anything            -1 means the most recent contact first
+    const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1});
+  } catch (err) {
+    
+  }
 }); 
 
 // @ route            POST api/contacts

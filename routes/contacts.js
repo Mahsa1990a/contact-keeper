@@ -66,6 +66,15 @@ router.post('/', [ auth,  // The way we can use some middlewares is using []
 router.put('/:id', auth, async (req, res) => { 
   // res.send('Update contact');
   const { name, email, phone, type } = req.body;
+
+  // Build contact object
+  const contactFields = {};
+  if(name) { // if there is a name let's add it to contactFields:
+    contactFields.name = name;
+  }
+  if(email) contactFields.email = email;
+  if(phone) contactFields.phone = phone;
+  if(type) contactFields.type = type;
 }); 
 
 // @ route            DELETE api/contacts/:id

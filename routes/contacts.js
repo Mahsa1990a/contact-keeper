@@ -30,7 +30,7 @@ router.get('/', auth, async (req, res) => {
 // @ access           Private
 router.post('/', [ auth,  // The way we can use some middlewares is using []
   body('name', 'Name is reqiured').notEmpty()
-], (req, res) => { 
+], async (req, res) => { 
   // res.send('Add contact');
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -47,7 +47,12 @@ router.post('/', [ auth,  // The way we can use some middlewares is using []
       type,
       user: req.user.id
     });
-    
+    // We wanna save it to db so we do newContact which is instance of contact and . save which will put in the db 
+    const contact = await newContact.save();
+
+    //Finally return contact to the client
+    res.json(contact);
+
   } catch (err) {
     
   }

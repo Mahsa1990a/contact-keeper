@@ -17,6 +17,8 @@ router.get('/', auth, (req, res) => {
   try {
     //                             find() means find by anything            -1 means the most recent contact first
     const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1});
+    res.json(contacts); //it returns contacts
+    
   } catch (err) {
     
   }

@@ -87,6 +87,12 @@ router.put('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
+    // Actual update:
+    contact = await Contact.findByIdAndUpdate(req.params.id, 
+      { $set: contactFields },
+      { new: true } // means if this contact doesn't exist lets create it
+    );
+
   } catch (err) {
     
   }

@@ -12,7 +12,7 @@ const Contact = require('../models/Contact');
 // @ route            GET api/contacts
 // @ description      Get All user contacts
 // @ access           Private
-router.get('/', auth, (req, res) => { 
+router.get('/', auth, async (req, res) => { 
   // res.send('Get All contacts');    Now we need to pull from database:
   try {
     //                             find() means find by anything            -1 means the most recent contact first
@@ -20,7 +20,8 @@ router.get('/', auth, (req, res) => {
     res.json(contacts); //it returns contacts
     
   } catch (err) {
-    
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 }); 
 

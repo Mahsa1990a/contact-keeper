@@ -75,6 +75,14 @@ router.put('/:id', auth, async (req, res) => {
   if(email) contactFields.email = email;
   if(phone) contactFields.phone = phone;
   if(type) contactFields.type = type;
+
+  try {
+    //                         for accessing '/:id'
+    let contact = await Contact.findById(req.params.id);
+    
+  } catch (err) {
+    
+  }
 }); 
 
 // @ route            DELETE api/contacts/:id

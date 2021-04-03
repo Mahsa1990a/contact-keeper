@@ -31,7 +31,13 @@ router.get('/', auth, async (req, res) => {
 router.post('/', [ auth,  // The way we can use some middlewares is using []
   body('name', 'Name is reqiured').notEmpty()
 ], (req, res) => { 
-  res.send('Add contact');
+  // res.send('Add contact');
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+   return res.status(400).json({ errors: errors.array() }); //will give us an arr of errors
+  }
+
+  const { name, email, phone, type } = req.body; //getting name, ... from body
 }); 
 
 // @ route            PUT api/contacts/:id

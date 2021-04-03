@@ -82,6 +82,11 @@ router.put('/:id', auth, async (req, res) => {
 
     if(!contact) return res.status(404).json({ msg: 'Contact not fonud' });
 
+    // We need to make sure user owns the contact:
+    if(contact.user.toString() !== req.user.id) { // because req.user.id so we add toString() to the other side to be string as well
+      return res.status(401).json({ msg: 'Not authorized' });
+    }
+
   } catch (err) {
     
   }

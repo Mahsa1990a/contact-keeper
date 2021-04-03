@@ -12,7 +12,7 @@ const Contact = require('../models/Contact');
 // @ route            GET api/contacts
 // @ description      Get All user contacts
 // @ access           Private
-router.get('/', (req, res) => { 
+router.get('/', auth, (req, res) => { 
   res.send('Get All contacts');
 }); 
 

@@ -63,8 +63,9 @@ router.post('/', [ auth,  // The way we can use some middlewares is using []
 // @ route            PUT api/contacts/:id
 // @ description      Update contacts
 // @ access           Private
-router.put('/:id', (req, res) => { 
-  res.send('Update contact');
+router.put('/:id', auth, async (req, res) => { 
+  // res.send('Update contact');
+  const { name, email, phone, type } = req.body;
 }); 
 
 // @ route            DELETE api/contacts/:id

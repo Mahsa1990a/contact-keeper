@@ -2,7 +2,12 @@
 // Also each contact specific to user
 
 const express = require('express');
-const router = express.Router(); 
+const router = express.Router();
+const auth = require('../middleware/auth');
+const { body, validationResult } = require('express-validator'); // add it for validation 
+
+const User = require('../models/User');
+const Contact = require('../models/Contact');
 
 // @ route            GET api/contacts
 // @ description      Get All user contacts

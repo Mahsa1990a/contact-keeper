@@ -79,7 +79,9 @@ router.put('/:id', auth, async (req, res) => {
   try {
     //                         for accessing '/:id'
     let contact = await Contact.findById(req.params.id);
-    
+
+    if(!contact) return res.status(404).json({ msg: 'Contact not fonud' });
+
   } catch (err) {
     
   }

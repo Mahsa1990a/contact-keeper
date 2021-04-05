@@ -72,6 +72,7 @@ const ContactState = (props) => {
       // Anything we want to access from other component we add here:
       value = {{
         contacts: state.contacts,
+        current: state.current,
         addContact,
         deleteContact,
         setCurrent,

@@ -50,13 +50,16 @@ const ContactState = (props) => {
 
   // Clear Filter
 
-  return(
-    <ContactContext.Provider>
-      {/* Anything we want to access from other component we add here: */}
-      value={{
+  return (
+    
+    <ContactContext.Provider
+      // Anything we want to access from other component we add here:
+      value = {{
         contacts: state.contacts,
 
       }}
+    >
+      
       { props.children }
     </ContactContext.Provider>
   )

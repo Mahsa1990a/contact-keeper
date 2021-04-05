@@ -44,6 +44,9 @@ const ContactState = (props) => {
   };
 
   // Delete Contact
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
 
   // Set Current Contact
 
@@ -61,7 +64,8 @@ const ContactState = (props) => {
       // Anything we want to access from other component we add here:
       value = {{
         contacts: state.contacts,
-        addContact
+        addContact,
+        deleteContact
       }}
     >
       

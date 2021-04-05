@@ -8,6 +8,12 @@ export default (state, action) => {
         ...state,
         contacts: [...state.contacts, action.payload]
       }
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        // state.contacts which is the current arr and then filter it => evaluate and will return all contacts that are not the current id
+        contacts: state.contacts.filter(contact => contact.id !== action.payload)
+      }
     default:
       return state;
   }

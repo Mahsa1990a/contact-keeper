@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'; // useReducer hook for accessing state and dispatch
-import uuid from 'uuid'; // it's only for generate random id
+import { v4 as uuidv4 } from 'uuid'; // it's only for generate random id
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 import { ADD_CONTACT, DELETE_CONTACT, SET_CURRENT, CLEAR_CURRENT, UPDATE_CONTACT, FILTER_CONTACTS, CLEAR_FILTER } from '../types';
@@ -39,7 +39,7 @@ const ContactState = (props) => {
   // Add Contact
   const addContact = (contact) => {
     // v4 is a method
-    contact.id = uuid.v4();
+    contact.id = uuidv4();
     dispatch({ type: ADD_CONTACT, payload: contact });
   };
 

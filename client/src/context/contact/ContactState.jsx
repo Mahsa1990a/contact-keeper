@@ -37,6 +37,11 @@ const ContactState = (props) => {
   //All of our actions:
 
   // Add Contact
+  const addContact = (contact) => {
+    // v4 is a method
+    contact.id = uuid.v4();
+    dispatch({ type: ADD_CONTACT, payload: contact });
+  };
 
   // Delete Contact
 
@@ -51,12 +56,12 @@ const ContactState = (props) => {
   // Clear Filter
 
   return (
-    
+
     <ContactContext.Provider
       // Anything we want to access from other component we add here:
       value = {{
         contacts: state.contacts,
-
+        addContact
       }}
     >
       

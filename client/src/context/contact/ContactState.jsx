@@ -30,6 +30,38 @@ const ContactState = (props) => {
         type: 'professional'
       }
     ]
-  }
-}
+  };
+  // state allow us to use to access anything from state and dispatch allow us dispatch objects to the reducer
+  const [state, dispatch] = useReducer(contactReducer, initialState);
+
+  //All of our actions:
+
+  // Add Contact
+
+  // Delete Contact
+
+  // Set Current Contact
+
+  // Clear current Contact
+
+  // Update Contact
+
+  // Filter Contacts
+
+  // Clear Filter
+
+  return(
+    <ContactContext.Provider>
+      {/* Anything we want to access from other component we add here: */}
+      value={{
+        contacts: state.contacts,
+
+      }}
+      { props.children }
+    </ContactContext.Provider>
+  )
+
+};
+
+export default ContactState;
 

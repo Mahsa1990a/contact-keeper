@@ -5,11 +5,14 @@ function Contacts() {
 
   const contactContext = useContext(ContactContext); // So now we have access to any access associated with contactContext
 
+  const { contacts } = contactContext; // pull out hard coded contacts from ContactState.jsx
   return (
-    <div>
-      
-    </div>
+    <Fragment>
+      {contacts.map(contact => (
+        <h3>{contact.name}</h3>
+      ))}
+    </Fragment>
   )
 }
 
-export default Contacts
+export default Contacts;

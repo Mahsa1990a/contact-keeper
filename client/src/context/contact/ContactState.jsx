@@ -29,7 +29,9 @@ const ContactState = (props) => {
         phone: '333-333-3333',
         type: 'professional'
       }
-    ]
+    ],
+    //when we click edit we want to put it into this peace of state and then we can change things on UI based on that
+    current: null
   };
   // state allow us to use to access anything from state and dispatch allow us dispatch objects to the reducer
   const [state, dispatch] = useReducer(contactReducer, initialState);

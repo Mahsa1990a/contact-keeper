@@ -7,6 +7,8 @@ const ContactForm = () => {
 
   const contactContext = useContext(ContactContext); //we need a func add contact from it
 
+  const { addContact, current } = contactContext;
+
   const [contact, setContact ] = useState({
     //defualt of contact(obj):
     name: '',
@@ -24,7 +26,7 @@ const ContactForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     //Once our form submited it's gonna look for addContact func(which we put it in ContactState.jsx)
-    contactContext.addContact(contact);
+    addContact(contact);
 
     setContact({ // Clear contact
       name: '',

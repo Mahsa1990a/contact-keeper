@@ -9,7 +9,7 @@ const Register = () => {
   const { setAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
-  const {  } = authContext;
+  const { register } = authContext;
 
 
   const [user, setUser] = useState({
@@ -33,7 +33,11 @@ const Register = () => {
     } else if (password !== password2) {
       setAlert('Passwords do not match!', 'danger')
     } else {
-      console.log('Register Submit ...')    
+      register({
+        name,
+        email,
+        password
+      })
     }
   };
 

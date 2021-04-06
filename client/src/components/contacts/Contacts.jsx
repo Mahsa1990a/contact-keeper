@@ -6,7 +6,12 @@ function Contacts() {
 
   const contactContext = useContext(ContactContext); // So now we have access to any access associated with contactContext
 
-  const { contacts } = contactContext; // pull out hard coded contacts from ContactState.jsx
+  const { contacts, filtered } = contactContext; // pull out hard coded contacts from ContactState.jsx
+
+  if (contacts.length === 0) { // If contact is empty
+    return <h4>Please Add a Contact</h4>
+  } 
+
   return (
     <Fragment>
       {contacts.map(contact => (

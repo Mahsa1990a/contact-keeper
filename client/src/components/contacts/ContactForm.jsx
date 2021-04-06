@@ -52,7 +52,8 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">Add Contact</h2>
+      {/* Change title based on adding or deleting: */}
+      <h2 className="text-primary">{current ? 'Edit Contact' : 'Add Contact'}</h2>
       <input type="text" placeholder="Name" name="name" value={name} onChange={onChange}/>
       <input type="email" placeholder="Email" name="email" value={email} onChange={onChange}/>
       <input type="text" placeholder="Phone" name="phone" value={phone} onChange={onChange}/>

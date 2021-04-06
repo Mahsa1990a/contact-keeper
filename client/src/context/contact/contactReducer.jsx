@@ -29,7 +29,14 @@ export default (state, action) => {
         ...state,
         current: null
       };
-    
+    case FILTER_CONTACTS:
+      return {
+        ...state,
+        filtered: state.contacts.filter(contact => {
+          const regex = new RegExp(`${action.payload}`, 'gi'); // 'gi' means to not be letter sensitive
+          return contact.name.match(regex) || contact.email.match(regex); //filter by name or email ... regex(regular expresion which is the text)
+        })
+      };
     default:
       return state;
   }

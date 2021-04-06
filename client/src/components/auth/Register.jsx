@@ -1,7 +1,11 @@
 // This is gonna be a form with a few fields so we use useState hook:
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AlertContext from '../../context/alert/alertContext';
 
 const Register = () => {
+
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
 
   const [user, setUser] = useState({
     name: '',

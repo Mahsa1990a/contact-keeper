@@ -37,6 +37,11 @@ export default (state, action) => {
           return contact.name.match(regex) || contact.email.match(regex); //filter by name or email ... regex(regular expresion which is the text)
         })
       };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
+      };
     default:
       return state;
   }

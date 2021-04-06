@@ -7,7 +7,7 @@ const ContactForm = () => {
 
   const contactContext = useContext(ContactContext); //we need a func add contact from it
 
-  const { addContact, current, clearCurrent } = contactContext; //current is null by default
+  const { addContact, current, clearCurrent, updateContact } = contactContext; //current is null by default
 
   useEffect(() => {
     if (current !== null) { //current is null by default
@@ -39,8 +39,14 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //Once our form submited it's gonna look for addContact func(which we put it in ContactState.jsx)
-    addContact(contact);
+
+    // if it's for addind contact or updating:
+    if (current === null) {
+      //Once our form submited it's gonna look for addContact func(which we put it in ContactState.jsx)
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
 
     setContact({ // Clear contact
       name: '',
@@ -49,7 +55,7 @@ const ContactForm = () => {
       type: 'personal'
     });
   };
-  
+
   // For clear button
   const clearAll = () => {
     clearCurrent();

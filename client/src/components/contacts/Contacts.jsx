@@ -14,9 +14,11 @@ function Contacts() {
 
   return (
     <Fragment>
-      {contacts.map(contact => (
-        <ContactItem key={contact.id} contact={contact} />
-      ))}
+
+      {filtered !== null ? //If something is filtering which means filter is not null, we'll map through it and show Contact item
+        filtered.map(contact => (<ContactItem key={contact.id} contact={contact} /> )) : 
+        contacts.map(contact => (<ContactItem key={contact.id} contact={contact} />)) //if there's nothing in the filter we'll show the contacts
+      }
     </Fragment>
   )
 }

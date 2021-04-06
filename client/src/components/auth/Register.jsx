@@ -9,10 +9,22 @@ const Register = () => {
     password: '',
     password2: ''
   });
+  //Let's destructure them:
+  const { name, email, password, password2 } = user; 
+
+  const onChange = () => {
+
+  }
 
   return (
-    <div>
-      
+    <div className='form-container'>
+      <h1>Account <span className="text-primary">Register</span></h1>
+      <form>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input type="text" name="name" value={name} onChange={onChange} />
+        </div>
+      </form>
     </div>
   )
 }

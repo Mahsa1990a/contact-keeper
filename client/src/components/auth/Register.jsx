@@ -12,9 +12,9 @@ const Register = () => {
   //Let's destructure them:
   const { name, email, password, password2 } = user; 
 
-  const onChange = () => {
-
-  }
+  const onChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  };
 
   return (
     <div className='form-container'>
@@ -40,6 +40,6 @@ const Register = () => {
       </form>
     </div>
   )
-}
+};
 
 export default Register;

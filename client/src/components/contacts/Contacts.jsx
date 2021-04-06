@@ -15,11 +15,15 @@ function Contacts() {
 
   return (
     <Fragment>
+      <TransitionGroup>
 
       {filtered !== null ? //If something is filtering which means filter is not null, we'll map through it and show Contact item
-        filtered.map(contact => (<ContactItem key={contact.id} contact={contact} /> )) : 
-        contacts.map(contact => (<ContactItem key={contact.id} contact={contact} />)) //if there's nothing in the filter we'll show the contacts
+        filtered.map(contact => 
+          <CSSTransition key={contact.id} timeout={500} classNames="item">(<ContactItem contact={contact} /> ) </CSSTransition> ) : 
+        contacts.map(contact => //if there's nothing in the filter we'll show the contacts
+          <CSSTransition key={contact.id} timeout={500} classNames="item">(<ContactItem contact={contact} /> ) </CSSTransition> )
       }
+      </TransitionGroup>
     </Fragment>
   )
 }

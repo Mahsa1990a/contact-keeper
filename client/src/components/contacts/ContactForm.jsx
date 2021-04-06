@@ -1,13 +1,27 @@
 // This ContactForm is gonna be use to add and update contacts
 
-import React, { useContext, useState } from 'react'; //we import useState because since it's a form we do need some component level state for each field
+import React, { useContext, useState, useEffect } from 'react'; //we import useState because since it's a form we do need some component level state for each field
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = () => {
 
   const contactContext = useContext(ContactContext); //we need a func add contact from it
 
-  const { addContact, current } = contactContext;
+  const { addContact, current } = contactContext; //current is null by default
+
+  useEffect(() => {
+    if (current !== null) { //current is null by default
+      setContact(current); // it will fill the form with whatever we want(fill it with current which is an obj)
+    } else {
+      setContact({ // Clear contact
+        name: '',
+        email:'',
+        phone:'',
+        type: 'personal'
+      });
+    }
+  
+  }, [contactContext, current]); //We want them to happen when contactContext or current changed
 
   const [contact, setContact ] = useState({
     //defualt of contact(obj):

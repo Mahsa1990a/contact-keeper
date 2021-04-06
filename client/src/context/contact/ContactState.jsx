@@ -31,7 +31,9 @@ const ContactState = (props) => {
       }
     ],
     //when we click edit we want to put it into this peace of state and then we can change things on UI based on that
-    current: null
+    current: null,
+    // For filtering by name or email: by default  is null
+    filtered: null // It will be an arr of filtered contacts that match with whatever we put in the input
   };
   // state allow us to use to access anything from state and dispatch allow us dispatch objects to the reducer
   const [state, dispatch] = useReducer(contactReducer, initialState);

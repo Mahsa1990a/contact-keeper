@@ -13,7 +13,7 @@ const ContactFilter = () => {
     if (filtered === null) {
       text.current.value = '';
     }
-  }, []);
+  });
 
   const onChange = (e) => {
     // we can get the actual value by input: text.current.value

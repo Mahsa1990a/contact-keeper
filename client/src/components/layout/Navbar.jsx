@@ -11,7 +11,7 @@ const Navbar = ({ title, icon }) => {
         </Link>
       </h1>
       <ul>
-      <li>
+        <li>
           <Link to='/'>Home</Link>
         </li>
         <li>

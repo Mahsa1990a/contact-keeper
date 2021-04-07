@@ -15,7 +15,7 @@ const Register = () => {
     if (error === 'User already exists!') {
       setAlert(error, 'danger'); //send error with type of danger
     }
-  }, [])
+  }, [error]); // we want it to run when error changed
 
 
   const [user, setUser] = useState({

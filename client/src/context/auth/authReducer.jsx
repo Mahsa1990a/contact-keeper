@@ -29,6 +29,7 @@ export default (state, action) => {
         loading: false
       };
     case REGISTER_FAIL: 
+    case AUTH_ERROR: //it does same thing as REGISTER_FAIL
     localStorage.removeItem('token');
     return {
       ...state,

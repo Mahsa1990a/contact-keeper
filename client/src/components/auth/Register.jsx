@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Register = () => {
+const Register = (props) => {
 
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
@@ -20,7 +20,8 @@ const Register = () => {
       setAlert(error, 'danger'); //send error with type of danger
       clearErrors();
     }
-  }, [error]); // we want it to run when error changed
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]); // we want it to run when error changed
 
 
   const [user, setUser] = useState({

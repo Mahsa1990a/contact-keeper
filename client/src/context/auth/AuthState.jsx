@@ -65,8 +65,9 @@ const AuthState = (props) => {
         payload: res.data 
       });
 
+      // Once we register user, it should call loadUser, and it should get the user from backend
       loadUser();
-      
+
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,

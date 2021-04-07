@@ -9,9 +9,13 @@ const Register = () => {
   const { setAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
-  const { register, error, clearErrors } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
+    if (isAuthenticated) {
+      // if isAuthenticated we wanna redirect to dashboard(Home page):
+      props.history.push('/');
+    }
     if (error === 'User already exists!') {
       setAlert(error, 'danger'); //send error with type of danger
       clearErrors();

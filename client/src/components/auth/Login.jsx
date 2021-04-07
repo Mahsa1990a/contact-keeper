@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -61,6 +62,7 @@ const Login = (props) => {
           <input type="password" name="password" value={password} onChange={onChange} required />
         </div>
         <input type="submit" value="Login" className='btn btn-primary btn-block' />
+        <Link to='/register'>Or Register</Link>
       </form>
     </div>
   )

@@ -9,11 +9,12 @@ const Register = () => {
   const { setAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
-  const { register, error } = authContext;
+  const { register, error, clearErrors } = authContext;
 
   useEffect(() => {
     if (error === 'User already exists!') {
       setAlert(error, 'danger'); //send error with type of danger
+      clearErrors();
     }
   }, [error]); // we want it to run when error changed
 

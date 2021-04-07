@@ -1,7 +1,28 @@
 // This is gonna be a form with a few fields so we use useState hook:
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
 const Login = () => {
+
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
+  const authContext = useContext(AuthContext);
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // if isAuthenticated we wanna redirect to dashboard(Home page):
+      props.history.push('/');
+    }
+    if (error === 'Invalid Credentials') {
+      setAlert(error, 'danger'); //send error with type of danger
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]); // we want it to run when error changed
+
 
   const [user, setUser] = useState({
     email: '',

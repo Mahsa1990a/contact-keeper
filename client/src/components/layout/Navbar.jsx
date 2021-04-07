@@ -38,7 +38,7 @@ const Navbar = ({ title, icon }) => {
         </Link>
       </h1>
       <ul>
-        
+        { isAuthenticated ? authLinks : guestLinks }
       </ul>
     </div>
   )

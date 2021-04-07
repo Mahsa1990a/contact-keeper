@@ -28,6 +28,21 @@ const AuthState = (props) => {
   //All of our actions:
 
   // Load User:
+  const loadUser = async () => {
+    // @todo - load token into global headers
+
+    try {
+      const res = await axios.get('/api/auth');
+      dispatch({ 
+        type: USER_LOADED, 
+        payload: res.data 
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR
+      });
+    }
+  };
 
   // Regisret User:
   const register = async (formData) => { // formData is the Data to register user
@@ -36,7 +51,7 @@ const AuthState = (props) => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }
+    };
 
     try {
       const res = await axios.post('/api/users', formData, config);
@@ -76,7 +91,8 @@ const AuthState = (props) => {
         user: state.user,
         error: state.error,
         register,
-        clearErrors
+        clearErrors,
+        loadUser
       }}
     >
       { props.children }

@@ -17,7 +17,7 @@ function Contacts() {
   }, []); //we just run it at the begining so we pass []
 
 
-  if (contacts.length === 0) { // If contact is empty
+  if (contacts !== null && contacts.length === 0 && !loading) { // If contact is empty
     return <h4>Please Add a Contact</h4>
   } 
 

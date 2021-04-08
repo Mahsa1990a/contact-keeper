@@ -22,7 +22,7 @@ export default (state, action) => {
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts], // with adding action.payload first, when we add new contact it will place on top
         loading: false
       };
     case UPDATE_CONTACT:

@@ -7,7 +7,6 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
-  REMOVE_ALERT
 } from '../types';
 
 // eslint-disable-next-line

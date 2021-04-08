@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'; // useReducer hook for accessing state and dispatch
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'; // it's only for generate random id
+// import { v4 as uuidv4 } from 'uuid'; // it's only for generate random id
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 import { ADD_CONTACT, DELETE_CONTACT, SET_CURRENT, CLEAR_CURRENT, UPDATE_CONTACT, FILTER_CONTACTS, CLEAR_FILTER } from '../types';
@@ -20,10 +20,30 @@ const ContactState = (props) => {
   //All of our actions:
 
   // Add Contact
-  const addContact = (contact) => {
+  const addContact = async (contact) => {
     // v4 is a method
-    contact.id = uuidv4();
-    dispatch({ type: ADD_CONTACT, payload: contact });
+    // contact.id = uuidv4(); //MongoDB will give us id so, we dont need this anymore
+
+    // Create our headers, because we're sending data, we need that content type application json:
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    try {
+      const res = await axios.post('/api/contacts', contact, config)
+      dispatch({ 
+        type: ADD_CONTACT, 
+        payload: res.data 
+      });
+
+    } catch (err) {
+      dispatch({ 
+        type: CONTACT_ERROR,
+        payload: err.response.msg
+      });
+    }
+
   };
 
   // Delete Contact

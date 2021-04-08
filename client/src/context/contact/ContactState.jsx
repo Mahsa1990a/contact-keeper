@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'; // useReducer hook for accessing state and dispatch
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'; // it's only for generate random id
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
@@ -6,30 +7,8 @@ import { ADD_CONTACT, DELETE_CONTACT, SET_CURRENT, CLEAR_CURRENT, UPDATE_CONTACT
 
 const ContactState = (props) => {
   const initialState = {
-    // for now we will have hard cocded contacts
-    contacts: [
-      {
-        id: 1,
-        name: 'Jill Johnson',
-        email: 'jill@gmail.com',
-        phone: '111-111-1111',
-        type: 'personal'
-      },
-      {
-        id: 2,
-        name: 'Sara Watson',
-        email: 'sara@gmail.com',
-        phone: '222-222-2222',
-        type: 'personal'
-      },
-      {
-        id: 3,
-        name: 'Harry White',
-        email: 'harry@gmail.com',
-        phone: '333-333-3333',
-        type: 'professional'
-      }
-    ],
+    // for now we will have hard cocded contacts // now we clear out hard coded contacts:
+    contacts: [],
     //when we click edit we want to put it into this peace of state and then we can change things on UI based on that
     current: null,
     // For filtering by name or email: by default  is null

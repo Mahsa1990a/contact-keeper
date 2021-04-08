@@ -20,7 +20,7 @@ function Contacts() {
       {filtered !== null  //If something is filtering which means filter is not null, we'll map through it and show Contact item
         ? filtered.map(contact => (
           <CSSTransition
-            key={contact.id} 
+            key={contact._id} //because MongoDB has _id not id
             timeout={500} 
             classNames="item"
           >
@@ -29,7 +29,7 @@ function Contacts() {
         ))
         : contacts.map(contact => ( //if there's nothing in the filter we'll show the contacts
           <CSSTransition
-            key={contact.id}
+            key={contact._id} //because MongoDB has _id not id
             timeout={500} 
             classNames="item"
           >

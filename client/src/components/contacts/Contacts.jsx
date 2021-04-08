@@ -2,6 +2,7 @@ import React, { useContext, Fragment, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'; // adding animation
 import ContactItem from './ContactItem';
 import ContactContext from '../../context/contact/contactContext';
+import Spinner from '../layout/Spinner';
 
 function Contacts() {
 
@@ -23,29 +24,32 @@ function Contacts() {
 
   return (
     <Fragment>
-      <TransitionGroup>
-
-      {filtered !== null  //If something is filtering which means filter is not null, we'll map through it and show Contact item
-        ? filtered.map(contact => (
-          <CSSTransition
-            key={contact._id} //because MongoDB has _id not id
-            timeout={500} 
-            classNames="item"
-          >
-            <ContactItem contact={contact} />
-          </CSSTransition> 
-        ))
-        : contacts.map(contact => ( //if there's nothing in the filter we'll show the contacts
-          <CSSTransition
-            key={contact._id} //because MongoDB has _id not id
-            timeout={500} 
-            classNames="item"
-          >
-            <ContactItem contact={contact} />  
-          </CSSTransition> 
-        ))
-      }
-      </TransitionGroup>
+      {/* if statement: if contacts is not null and it's not loading we wanna show them: */}
+      {contacts !== null && !loading ? (
+        <TransitionGroup>
+          {filtered !== null  //If something is filtering which means filter is not null, we'll map through it and show Contact item
+            ? filtered.map(contact => (
+              <CSSTransition
+                key={contact._id} //because MongoDB has _id not id
+                timeout={500} 
+                classNames="item"
+              >
+                <ContactItem contact={contact} />
+              </CSSTransition> 
+            ))
+            : contacts.map(contact => ( //if there's nothing in the filter we'll show the contacts
+              <CSSTransition
+                key={contact._id} //because MongoDB has _id not id
+                timeout={500} 
+                classNames="item"
+              >
+                <ContactItem contact={contact} />  
+              </CSSTransition> 
+            ))
+          }
+        </TransitionGroup>
+      ) : <Spinner /> }
+      
     </Fragment>
   )
 }

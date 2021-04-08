@@ -21,7 +21,7 @@ To Watch Deployed App with Heroku Go To :
 
 ### Edit & Delete
 
-!["Edit & Delete"]()
+!["Edit & Delete"](https://github.com/Mahsa1990a/contact-keeper/blob/main/client/public/screenShot/Edit.png?raw=true)
 
 ### Filter
 

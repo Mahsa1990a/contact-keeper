@@ -19,7 +19,7 @@ import {
 const ContactState = (props) => {
   const initialState = {
     // for now we will have hard cocded contacts // now we clear out hard coded contacts:
-    contacts: [],
+    contacts: null,
     //when we click edit we want to put it into this peace of state and then we can change things on UI based on that
     current: null,
     // For filtering by name or email: by default  is null

@@ -1,6 +1,7 @@
 # contact-keeper
 
 > Full stack MERN (MongoDB, Express, React and Node) "Contact Manager" app with React hooks, context & JWT(json web tokens) authentication and deployed by Heroku.
+
 > You can Register, Login and Manage(Add, Delete, Edit, Filter) your Contacts.
 
 To Watch Deployed App Go To :
